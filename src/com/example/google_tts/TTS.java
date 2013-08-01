@@ -43,31 +43,26 @@ public class TTS {
 	}
 
 	public void TTS2File(String filePath, final String fileName, final String s, final String tl) {
-		new Thread(new Runnable() {
-
-			public void run() {
-				try {
-					URI uri = new URI("http://translate.google.com.tw/translate_tts?ie=UTF-8&q=" + s + "&tl=" + tl);
-					URL u = new URL(uri.toASCIIString());
-					HttpURLConnection c = (HttpURLConnection) u.openConnection();
-					c.addRequestProperty("User-Agent", "Mozilla/5.0");
-					c.setRequestMethod("GET");
-					c.setDoOutput(true);
-					c.connect();
-					FileOutputStream f = new FileOutputStream(new File(Environment.getExternalStorageDirectory() + "/" + fileName + ".mp3"));
-					InputStream in = c.getInputStream();
-					byte[] buffer = new byte[1024];
-					int len1 = 0;
-					while ((len1 = in.read(buffer)) > 0) {
-						f.write(buffer, 0, len1);
-					}
-					f.close();
-				} catch (Exception e) {
-					System.out.println(e);
-				}
-
+		try {
+			URI uri = new URI("http://translate.google.com.tw/translate_tts?ie=UTF-8&q=" + s + "&tl=" + tl);
+			URL u = new URL(uri.toASCIIString());
+			HttpURLConnection c = (HttpURLConnection) u.openConnection();
+			c.addRequestProperty("User-Agent", "Mozilla/5.0");
+			c.setRequestMethod("GET");
+			c.setDoOutput(true);
+			c.connect();
+			FileOutputStream f = new FileOutputStream(new File(Environment.getExternalStorageDirectory() + "/" + fileName + ".mp3"));
+			InputStream in = c.getInputStream();
+			byte[] buffer = new byte[1024];
+			int len1 = 0;
+			while ((len1 = in.read(buffer)) > 0) {
+				f.write(buffer, 0, len1);
 			}
-		}).start();
+			f.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
 	}
 
 }
