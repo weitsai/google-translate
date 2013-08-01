@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">國際翻譯機</string>
+    <string name="action_settings">Settings</string>
+    <string name="tts">文字轉聲音</string>
+    <string name="stt">聲音轉文字</string>
+    
+
+</resources>
