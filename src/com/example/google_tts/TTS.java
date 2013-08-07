@@ -26,9 +26,9 @@ public class TTS {
 	/**
 	 * 
 	 * @param str
-	 *            要轉換的字串
+	 *          要轉換的字串
 	 * @param lang
-	 *            語系（請參考 google 翻譯，zh-TW 台灣）
+	 *          語系（請參考 google 翻譯，zh-TW 台灣）
 	 * @author will
 	 */
 	public void toSpeech(String str, String lang) {
